@@ -1,6 +1,28 @@
-document.getElementById("htmlCode").value="<div>\n\n</div>";
-document.getElementById("cssCode").value="<style>\n\n</style>";
-document.getElementById("jsCode").value="<script>\n\n</script>";
+// document.getElementById("htmlCode").value="<div>\n\n</div>";
+// document.getElementById("cssCode").value="<style>\n\n</style>";
+// document.getElementById("jsCode").value="<script>\n\n</script>";
+
+
+
+// Retrieve saved code from localStorage if available
+document.getElementById("htmlCode").value = localStorage.getItem("savedHTMLCode") || "<div>\n\n</div>";
+document.getElementById("cssCode").value = localStorage.getItem("savedCSSCode") || "<style>\n\n</style>";
+document.getElementById("jsCode").value = localStorage.getItem("savedJSCode") || "<script>\n\n</script>";
+
+// Function to save code to localStorage
+function saveCodeToLocalStorage() {
+  localStorage.setItem("savedHTMLCode", document.getElementById("htmlCode").value);
+  localStorage.setItem("savedCSSCode", document.getElementById("cssCode").value);
+  localStorage.setItem("savedJSCode", document.getElementById("jsCode").value);
+}
+
+// Add event listeners to code inputs
+document.getElementById("htmlCode").addEventListener("input", saveCodeToLocalStorage);
+document.getElementById("cssCode").addEventListener("input", saveCodeToLocalStorage);
+document.getElementById("jsCode").addEventListener("input", saveCodeToLocalStorage);
+
+// Rest of the code...
+
 
 function showPreview(){
     var htmlCode = document.getElementById("htmlCode").value;
@@ -35,3 +57,4 @@ function show_all(){
         document.getElementById("result").style.display="none";
     }
 }
+// Retrieve saved code from localStorage if available
